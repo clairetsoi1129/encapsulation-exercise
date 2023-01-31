@@ -18,9 +18,13 @@ public class Student {
         this.name = name;
         this.grade = grade;
 
+        validateGroup(group);
+        this.group = group;
+    }
+
+    private void validateGroup(int group){
         if (IntStream.of(ALLOWED_GROUP).noneMatch(x -> x == group))
             throw new IllegalArgumentException("Only allow group 1,2,3,4,5");
-        this.group = group;
     }
 
     public void upgrade() {
