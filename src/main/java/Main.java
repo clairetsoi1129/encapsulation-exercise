@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Student studentA = new Student("Arthur", Grade.A, new Group(1));
+        Student studentA = new Student("Arthur", Grade.A, 1);
         try {
             System.out.println("Student " + studentA.getName() + " Grade:" + studentA.getGrade());
             studentA.downgrade();
@@ -48,7 +48,7 @@ public class Main {
 
         try {
             @SuppressWarnings("unused")
-            Student studentB = new Student("Arthur", Grade.A, new Group(0));
+            Student studentB = new Student("Arthur", Grade.A, 0);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

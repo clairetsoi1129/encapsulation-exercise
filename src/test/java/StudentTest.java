@@ -6,19 +6,19 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StudentTest {
     @Test
     public void testGetName() {
-        Student student = new Student("Arthur", Grade.A, new Group(1));
+        Student student = new Student("Arthur", Grade.A, 1);
         assertEquals("Arthur", student.getName());
     }
 
     @Test
     public void testGetGrade() {
-        Student student = new Student("Arthur", Grade.A, new Group(1));
+        Student student = new Student("Arthur", Grade.A, 2);
         assertEquals(Grade.A, student.getGrade());
     }
 
     @Test
     public void testNormalDowngrade() {
-        Student student = new Student("Arthur", Grade.A, new Group(1));
+        Student student = new Student("Arthur", Grade.A, 3);
         student.downgrade();
         assertEquals(Grade.B, student.getGrade());
         student.downgrade();
@@ -33,7 +33,7 @@ public class StudentTest {
 
     @Test
     public void testNormalUpgrade() {
-        Student student = new Student("Arthur", Grade.F, new Group(1));
+        Student student = new Student("Arthur", Grade.F, 4);
         student.upgrade();
         assertEquals(Grade.E, student.getGrade());
         student.upgrade();
@@ -49,7 +49,7 @@ public class StudentTest {
     @Test
     public void testWrongDowngrade() {
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            Student student = new Student("Arthur", Grade.F, new Group(1));
+            Student student = new Student("Arthur", Grade.F, 5);
             student.downgrade();
         });
 
@@ -62,7 +62,7 @@ public class StudentTest {
     @Test
     public void testWrongUpgrade() {
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            Student student = new Student("Arthur", Grade.A, new Group(1));
+            Student student = new Student("Arthur", Grade.A, 5);
             student.upgrade();
         });
 
@@ -76,7 +76,7 @@ public class StudentTest {
     public void testWrongGroup() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             @SuppressWarnings("unused")
-            Student student = new Student("Arthur", Grade.A, new Group(6));
+            Student student = new Student("Arthur", Grade.A, 6);
         });
 
         String expectedMessage = "Only allow group 1,2,3,4,5";
